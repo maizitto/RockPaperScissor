@@ -14,7 +14,10 @@ function getHumanMove () {
 }
 
 function game () {
-let numberGame = prompt ("Quante partite vuoi giorcare?")
+let numberGame = 0;
+do {
+numberGame = prompt ("Quante partite vuoi giorcare?")
+} while (isNaN(numberGame))
 for (let i=0 ; i < numberGame; i++){
     let humanMove = getHumanMove()
     let computerMove = computerPlay().toLowerCase()
@@ -42,20 +45,6 @@ function play (humanMove, computerMove) {
             humanMove === "sasso" ? (console.log("Hai vinto"), incrementPoints(1,0))
             : (console.log("Hai perso"), incrementPoints(0,1))
             break;  
-    }
-    switch (result) {
-        case "Parità" :
-            points[0]=0;
-            points[1]=0;
-            break
-        case "Hai vinto" :
-            points[0]=1;
-            points[1]=0;
-                break
-         case "Hai perso" :
-            points[0]=0;
-            points[1]=1;
-                    break
     }
 }
 
