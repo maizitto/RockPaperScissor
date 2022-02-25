@@ -1,18 +1,18 @@
-function computerPlay() { 
+function computerPlay() { //Scelta randomica della mossa del computer
     let random = Math.floor(Math.random()*10)
     return random > 0 && random < 3 ? "Sasso" :
                    random > 3 && random < 7 ? "Carta" :
                    "Forbice" 
 }
 
-function getHumanMove () {
+function getHumanMove () { //Inserimento della mossa del Player
     let humanMove = prompt("Inserisci la tua mossa (Carta/Sasso/Forbice").toLowerCase();
     console.log("Mossa scelta : ", humanMove)
     humanMove === "carta" || humanMove === "sasso" || humanMove === "forbice" ? console.log("Giochiamo") : getHumanMove();
     return humanMove
 }
 
-function game () {
+function game () { //Partita vera e propria
 let numberGame = 0;
 do {
 numberGame = prompt ("Quante partite vuoi giorcare?")
@@ -24,7 +24,7 @@ for (let i=0 ; i < numberGame; i++){
 }
 }
 
-function play (humanMove, computerMove) {
+function play (humanMove, computerMove) { //Singola Manche della partita
     switch (computerMove) {
         case "sasso" :
             humanMove === "sasso" ? (console.log("Parità"), incrementPoints(0,0)) :
@@ -46,7 +46,7 @@ function play (humanMove, computerMove) {
     }
 }
 
-function incrementPoints (h,c) {
+function incrementPoints (h,c) { //Conteggio Punti
     points[0] += h;
     points[1] += c;
 
