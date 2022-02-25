@@ -2,8 +2,7 @@ function computerPlay() {
     let random = Math.floor(Math.random()*10)
     return random > 0 && random < 3 ? "Sasso" :
                    random > 3 && random < 7 ? "Carta" :
-                   "Forbice"
-    
+                   "Forbice" 
 }
 
 function getHumanMove () {
@@ -26,7 +25,6 @@ for (let i=0 ; i < numberGame; i++){
 }
 
 function play (humanMove, computerMove) {
-    let result = 0;
     switch (computerMove) {
         case "sasso" :
             humanMove === "sasso" ? (console.log("Parità"), incrementPoints(0,0)) :
