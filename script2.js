@@ -5,35 +5,20 @@ function computerPlay() { //Scelta randomica della mossa del computer
                    "Forbice" 
 }
 
-let points = [0,0]
+function incrementPoints (h,c) { //Conteggio Punti
+    points[0] += h;
+    points[1] += c;
 
-let buttonH 
-const buttons = document.querySelectorAll("button")
-buttons.forEach( button => button.addEventListener("click", () => {
-    console.log(button.textContent)
-    return buttonH = button
-}))
-
-/*function getHumanMove () { //Inserimento della mossa del Player
-    let humanMove = prompt("Inserisci la tua mossa (Carta/Sasso/Forbice").toLowerCase();
-    console.log("Mossa scelta : ", humanMove)
-    humanMove === "carta" || humanMove === "sasso" || humanMove === "forbice" ? console.log("Giochiamo") : getHumanMove();
-    return humanMove
-}*/
-
-function game () { //Partita vera e propria
-let numberGame = 0;
-do {
-numberGame = prompt ("Quante partite vuoi giorcare?")
-} while (isNaN(numberGame))
-for (let i=0 ; i < numberGame; i++){
-    let humanMove = buttonH
-    let computerMove = computerPlay().toLowerCase()
-    play(humanMove, computerMove)
+    console.log("Punteggio Umano : ", points[0],
+    "Punteggio Computer: ", points[1])
 }
-}
+
 
 function play (humanMove, computerMove) { //Singola Manche della partita
+    
+    console.log(`Mossa selezionata : ${humanMove}`)
+    console.log(`Mossa del computer : ${computerMove}`)
+
     switch (computerMove) {
         case "sasso" :
             humanMove === "sasso" ? (console.log("Parità"), incrementPoints(0,0)) :
@@ -55,10 +40,16 @@ function play (humanMove, computerMove) { //Singola Manche della partita
     }
 }
 
-function incrementPoints (h,c) { //Conteggio Punti
-    points[0] += h;
-    points[1] += c;
+let points = [0,0]
 
-    console.log("Punteggio Umano : ", points[0],
-    "Punteggio Computer: ", points[1])
-}
+const buttons = document.querySelectorAll("button")
+
+buttons.forEach( button => button.addEventListener("click", () => {
+    let humanMove = button.textContent.toLowerCase()
+    play(humanMove, computerPlay().toLowerCase())
+
+    if (points[0] === 5 || points[1] === 5 ) {
+        console.log("FINISH")
+    }
+}))
+
